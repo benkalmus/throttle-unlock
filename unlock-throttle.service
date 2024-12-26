@@ -1,0 +1,14 @@
+[Unit]
+Description=Unlocks CPU power throttle in Optiplex 7050
+DefaultDependencies=no
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'wrmsr -a 0x1a0 0x850089 && echo 0 | tee /sys/devices/system/cpu/intel_pstate/no_turbo'
+RemainAfterExit=true
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
