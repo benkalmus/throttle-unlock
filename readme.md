@@ -1,8 +1,27 @@
-copy the .service file to 
+## Pre-req
 
-cp unlock-throttle.service /etc/systemd/system/unlock-throttle.service
+Install `wrmsr` command.
 
-enable this with:
+### CachyOS 
+
+```sh
+# arch / cachyos
+sudo pacman -S msr-tools
+
+# ubuntu / debian
+sudo apt install msr-tools
+```
+
+
+## Install
+
+Copy the systemctl service file to:
+
+```bash
+sudo cp unlock-throttle.service /etc/systemd/system/unlock-throttle.service
+
+# enable with:
+
 sudo systemctl daemon-reload
-sudo systemctl enable unlock-throttle.service
-
+sudo systemctl enable --now unlock-throttle.service
+```
